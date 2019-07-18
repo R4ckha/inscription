@@ -28,11 +28,11 @@ class Database
         return $this->instance;
     }
 
-    public function query($query)
+    public function query(string $query, array $option = null): array
     {
         $db = $this->instance;
         $stmt = $db->prepare($query);
-        $stmt->execute();
+       	$stmt->execute();
         return $stmt->fetchAll();
     }
  

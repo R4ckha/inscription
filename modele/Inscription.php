@@ -5,6 +5,7 @@ class Inscription implements Crud
 {
 	private $databaseManager;
 	private $id;
+	private $id_user;
 
     public function __construct(Database $databaseManager)
     {
@@ -19,14 +20,18 @@ class Inscription implements Crud
 	
     public function selectAll()
     {
-        $req = $this->databaseManager->getInstance()->query("SELECT * FROM site_recette");
-        return $req->fetchAll();
+		return $this->databaseManager->getInstance()->query("SELECT * FROM site_recette");
 	}
 	
 	public function selectOne(int $id)
     {
 		$this->setId($id);
-		$req = $this->databaseManager->getInstance()->query("SELECT * FROM site_recette WHERE id = {$this->id}");
-        return $req->fetchAll();
+		return $this->databaseManager->getInstance()->query("SELECT * FROM site_recette WHERE id = {$this->id}"); 
+	}
+	
+	public function selectByUser(int $id_user)
+    {
+		$this->setId($id);
+		return $this->databaseManager->getInstance()->query("SELECT * FROM site_recette WHERE id = {$this->id}"); 
     }
 }
